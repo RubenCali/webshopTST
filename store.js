@@ -1,12 +1,20 @@
-
-let removeCartItemButton = document.getElementsByClassName('btn-danger');
-for (let i = 0; i < removeCartItemButton.length; i++){
-    let button = removeCartItemButton[i]
-    button.addEventListener('click', function(event){
-       let buttonClicked = event.target
-       buttonClicked.parentElement.parentElement.remove()
-    })
+if(document.readyState == 'loading'){
+    document.addEventListener('DOMContentLoaded', ready)
 }
+else{
+    ready()
+}
+function ready(){
+    let removeCartItemButton = document.getElementsByClassName('btn-danger');
+    for (let i = 0; i < removeCartItemButton.length; i++){
+        let button = removeCartItemButton[i]
+        button.addEventListener('click', function(event){
+           let buttonClicked = event.target
+           buttonClicked.parentElement.parentElement.remove()
+        })
+    }
+}
+
 function updateCartTotal(){
     let cartItemContainer = document.getElementsByClassName('cart-items')[0]
     let cartRows = cartItemContainer.getElementsByClassName('cart-row')
