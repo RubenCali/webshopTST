@@ -42,11 +42,19 @@ function AddToCartClicked(event) {
   let price = shopItem.getElementsByClassName("shop-item-price")[0].innerText;
   let imageSrc = shopItem.getElementsByClassName("shop-item-image")[0].src;
   addItemToCart(title, price, imageSrc);
+  updateCartTotal()
 }
 function addItemToCart(title, price, imageSrc) {
   let cartRow = document.createElement("div");
   cartRow.classList.add('cart-row')
   let cartItems = document.getElementsByClassName("cart-items")[0];
+  let cartItemNames = cartItems.getElementsByClassName('cart-item-title')
+  for ( let i = 0; i < cartItemNames.length; i++){
+      if(cartItemNames[i].innerText == title){
+          alert('Dit product is al in de cart gezet')
+          return
+      }
+  }
   let cartContents = `
     div class="cart-item cart-column">
                         <img class="cart-item-image" src="${imageSrc}" width="100" height="100">
